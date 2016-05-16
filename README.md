@@ -4,7 +4,7 @@ A database for a printing shop.
 --------
 
 ## INSTALLATION OF DATABASE
-- Please read database/README_IMPORTINGDB.txt
+- Please read database/README.txt
 
 -----------
 
