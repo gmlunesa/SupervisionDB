@@ -10,7 +10,7 @@ A database for a printing shop.
 
 ## FLOW OF PAGES
 
-*to be updated*
+![alt text](https://raw.githubusercontent.com/gmlunesa/SupervisionDB/master/pageFlow.png "Logo Title Text 1")
 
 -----------
 
