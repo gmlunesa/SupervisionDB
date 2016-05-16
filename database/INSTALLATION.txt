@@ -1,0 +1,3 @@
+Please open XAMPP and import this.
+
+More details here: http://www.inmotionhosting.com/support/website/phpmyadmin/import-database-using-phpmyadmin
