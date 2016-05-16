@@ -44,10 +44,10 @@ A database for a printing shop.
 ##COMMENTS
 - I have only made one order_(product).php page, and that is order_bagtag.php
 - I also have only made one (product)_php.php page, and that is order_bagtag.php
-- Imporved CSS design, hope it's okay
+- Improved CSS design, hope it's okay
 - Code is still unrefined and messy
 - Thinking of converting to mysqli because mysql is deprecated, but it's too much
-- Added functionalities to UPDATE and DELETE orders.
+- We can now update, delete and view orders in tabular form
 
 -----------
 
@@ -64,6 +64,7 @@ A database for a printing shop.
 - Make css design for tables
 - Make viewOrder.php
 - Upload on github to show off
+- Added functionalities to UPDATE and DELETE orders.
 
 -----------
 
