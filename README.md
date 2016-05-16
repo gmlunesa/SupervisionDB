@@ -17,7 +17,7 @@ A database for a printing shop.
 ## PAGE DESC
 
 **main.php**
-- presents two choices, Add Order or View Order
+- presents four choices, Add, Update, Delete, View
 
 **customer.php**
 - customer details
