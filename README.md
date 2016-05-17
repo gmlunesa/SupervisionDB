@@ -32,10 +32,35 @@ A database for a printing shop.
 
 **(product)_php.php (example: bagtag_php.php)**
 - add information gathered from order_(product).php and puts it in database
-- presents user with two choices, finish the order or add another one
+- presents user with two choices, finish the order (redirects to rec.php) or add another one
+
+**rec.php**
+- presents the official invoice of the order that was just addded
+
 
 **order_info.php**
 - presents user with product choices, similar with addCustomerDB.php menu
+
+**update.php**
+- presents user with choices on what kind of order to update
+
+**update_(product).php (example: update_bagtag.php)**
+- update product details
+
+**u(product)_php.php (example: bagtag_php.php)**
+- update information gathered from u(product)_php.php in the database
+- presents user with two choices, finish the order or add another one
+
+**view.php**
+- presents the order, sorted by customer, multiple tables
+- also includes the link to each order's receipts (redirects to receipt.php)
+- includes the option to sort the orders by date (redirects to viewByDate.php)
+- includes option to add, update or delete orders
+
+**viewByDate.php**
+- one table, sorted by date
+- includes option to add, update or delete orders
+
 
 *to be updated*
 
