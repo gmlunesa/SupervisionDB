@@ -57,10 +57,25 @@ A database for a printing shop.
 - includes the option to sort the orders by date (redirects to viewByDate.php)
 - includes option to add, update or delete orders
 
+**receipt.php**
+- presents the receipt of the order from view.php
+
 **viewByDate.php**
 - one table, sorted by date
 - includes option to add, update or delete orders
 
+**delete.php**
+- gathers the product ID of the order to be deleted
+
+**delete_php.php**
+- retrieves the order, and prompts if the user is sure
+
+**confirmdelete.php**
+- deletes order in the database
+- presents success message
+
+**lunesa.php**
+- terms and condition for the CSS designer woot
 
 *to be updated*
 
