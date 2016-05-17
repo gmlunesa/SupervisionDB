@@ -34,7 +34,7 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
     <div class="main-content">
 
         <!-- the 'action' word in the form tag indicates where it will redirect, when the 'Continue button is pressed' -->
-
+            <!-- CHANGE THE DESTINATION INDICATED BY ACTION -->
         <form class="form-basic" method="post" action="bagtag_php.php">
 
             <div class="form-title-row">

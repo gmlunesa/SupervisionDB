@@ -22,7 +22,7 @@
 
 
 	<header>
-		<h1>JNJ Prints | Add Order</h1>
+		<h1>JNJ Prints | Update Order</h1>
         <a href="view.php">View Orders</a>
         <a href="main.php">Home</a>
     </header>
