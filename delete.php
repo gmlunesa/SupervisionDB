@@ -21,7 +21,7 @@
 
  
 	<header>
-		<h1>JNJ Prints | Order Form</h1>
+		<h1>JNJ Prints | Delete Order</h1>
         <a href="view.php">View Orders</a>
         <a href="main.php">Home</a>
     </header>

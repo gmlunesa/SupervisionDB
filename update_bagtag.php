@@ -23,7 +23,7 @@ session_start();
 
  
 	<header>
-		<h1>JNJ Prints | Order Form</h1>
+		<h1>JNJ Prints | Update Order</h1>
         <a href="view.php">View Orders</a>
         <a href="main.php">Home</a>
     </header>
@@ -52,6 +52,7 @@ session_start();
                     <!-- Take note of the select name. It represents the NAME of the variable of the database table.-->
                     <select name="Type">
                         <!-- The option value represents the value that will be stored in the variable, specified in select name -->
+                        <option value ="">Type</option>
                         <option value = "Rubber">Rubber</option>
                         <option value = "Clear Plastic">Clear Plastic</option>
                         <option value = "Glass">Glass</option>

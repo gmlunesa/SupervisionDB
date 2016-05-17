@@ -51,7 +51,7 @@ $productArray = mysql_query($productquery);
 
     <header>
         <h1>JNJ Prints</h1>
-        <a href="view.php">View Orders</a>
+        <a href="view.php">Delete Order</a>
         <a href="main.php">Home</a>
         
     </header>
@@ -128,7 +128,7 @@ $productArray = mysql_query($productquery);
                     echo'<div class="cell">';
                     echo'Type';
                     echo'</div>';
-                    
+
                     echo'<div class="cell">';
                     echo'Quantity';
                     echo'</div>';
