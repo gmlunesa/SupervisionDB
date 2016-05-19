@@ -47,7 +47,7 @@ A database for a printing shop.
 **update_(product).php (example: update_bagtag.php)**
 - update product details
 
-**u(product)_php.php (example: bagtag_php.php)**
+**u(product)_php.php (example: uBagtag_php.php)**
 - update information gathered from u(product)_php.php in the database
 - presents user with two choices, finish the order or add another one
 
@@ -94,6 +94,10 @@ A database for a printing shop.
 ##TO DO LIST
 - Complete all order_(product).php pages
 - Complete all (product)_php.php pages
+- Complete all update(product).php pages
+- Complete all u(product)_php.php pages
+- Add an Update Customer information function
+- Do a seaerch function to implement the Update Customer Information
 - Pass this sh!t to Miss Jam
 - Refine and clean up code
 
@@ -105,6 +109,7 @@ A database for a printing shop.
 - Make viewOrder.php
 - Upload on github to show off
 - Added functionalities to UPDATE and DELETE orders.
+- Receipt functionalities too
 
 -----------
 
