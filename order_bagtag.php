@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Determine the current Customer ID
 $lastCustIDpassed = $_SESSION['lastCustID'];
 
 /*echo "I'd like {$lastCustIDpassed} waffles";*/
@@ -34,6 +35,7 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
     <div class="main-content">
 
         <!-- the 'action' word in the form tag indicates where it will redirect, when the 'Continue button is pressed' -->
+            <!-- TO BE CHANGED -->
             <!-- CHANGE THE DESTINATION INDICATED BY ACTION -->
         <form class="form-basic" method="post" action="bagtag_php.php">
 
@@ -41,6 +43,8 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
                 <h1>Add Order :: Product Information</h1>
             </div>
 
+            <!-- TO BE CHANGED -->
+            <!-- each div class = "form-row", represents well, each row of the form. -->
             <div class="form-row">
                 <label>
                     <span>Type</span>
@@ -53,8 +57,10 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
                         <option value = "Clear Plastic">Clear Plastic</option>
                         <option value = "Glass">Glass</option>
                     </select>
+                    
                 </label>
             </div>
+            <!-- END TO BE CHANGED -->
 
             <div class="form-row">
 

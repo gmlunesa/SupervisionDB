@@ -19,11 +19,17 @@ if (!$db_selected) {
 }
 
 // Basically we retrieve the Cust_ID of the current customer
+    // DO NOT CHANGE
 $custID = $_SESSION['lastCustID'];
 
 
 // We retrieve the input values from the previous page, and store it to temporary variables.
+// What you put inside $_POST[''] is the variable name corresponding with the <input name = ""> in the previous page.
+    //TO BE CHANGED
+        // Please change this accordingly, for the following represents the unique variables for each product.
 $valueType = $_POST['Type'];
+
+// Default properties for each product
 $valueDesc = $_POST['Prod_Desc'];
 $valueDesign = $_POST['Prod_Design'];
 $valuePrice = $_POST['Design_Price'];
@@ -31,9 +37,12 @@ $valueDate = $_POST['Pickup_Date'];
 $valueQuantity = $_POST['Quantity'];
 
 // Specify the name of the product
+    // TO BE CHANGED
 $valueName = "Bag Tag";
 
 // Make a query. Specify the table column firsts, and then the php $variables that we just made, above
+    // TO BE CHANGED
+        // Please update the unique variables.
 $sql = "INSERT INTO products (Prod_Name, Type, Prod_Desc, Prod_Design, Design_Price, Pickup_Date, Quantity, Cust_ID) VALUES ('$valueName','$valueType', '$valueDesc', '$valueDesign', '$valuePrice', '$valueDate', '$valueQuantity', '$custID')";
 
 
