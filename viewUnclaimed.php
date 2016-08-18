@@ -18,23 +18,27 @@ if (!$db_selected) {
     die('Can\'t use ' . DB_NAME . ': ' . mysql_error());
 }
 
-
-//$productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date >= CURDATE() ORDER BY products.Pickup_Date ASC";
-
 if (isset($_GET['interval'])) {
-$valueInterval = $_GET['interval'];
+    $valueInterval = $_GET['interval'];
 
-if ($valueInterval == 1) {
-    $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 8 DAY) ORDER BY products.Pickup_Date ASC";
-} else if ($valueInterval == 2) {
-    $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 1 MONTH) ORDER BY products.Pickup_Date ASC";
-} else if ($valueInterval == 3) {
-    $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date >= CURDATE() ORDER BY products.Pickup_Date ASC";
-}
+    if ($valueInterval == 4) { // future
+        $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 AND products.Pickup_Date >= CURDATE() ORDER BY products.Pickup_Date ASC";
+    } else if ($valueInterval == 1) {
+        $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 AND products.Pickup_Date = CURDATE() ORDER BY products.Pickup_Date ASC";
+    } else if ($valueInterval == 2) {
+        //$productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 AND products.Pickup_Date > DATE_SUB(CURDATE(), INTERVAL 1 WEEK) ORDER BY products.Pickup_Date ASC";
+        $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 AND products.Pickup_Date BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND CURDATE() ORDER BY products.Pickup_Date ASC";
+    } else if ($valueInterval == 3) {
+        //$productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 AND products.Pickup_Date > DATE_SUB(CURDATE(), INTERVAL 1 MONTH) ORDER BY products.Pickup_Date ASC";
+        $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 AND products.Pickup_Date BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE() ORDER BY products.Pickup_Date ASC";
+
+    }
 
 } else {
-    $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date = CURDATE() ORDER BY products.Pickup_Date ASC";
+    $productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 ORDER BY products.Pickup_Date ASC";
+
 }
+//$productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Claimed = 0 ORDER BY products.Pickup_Date ASC";
 
 
 $productArray = mysql_query($productquery);
@@ -105,14 +109,16 @@ $productArray = mysql_query($productquery);
                         $valueInterval = $_GET['interval'];
 
                         if ($valueInterval == 1) {
-                            echo '<h1>Due Orders This Week :: Sorted by Date</h1>';
+                            echo '<h1>Orders :: Unclaimed Today</h1>'; 
                         } else if ($valueInterval == 2) {
-                            echo '<h1>Due Orders This Month :: Sorted by Date</h1>';
+                            echo '<h1>Orders :: Unclaimed Past Week</h1>'; 
                         } else if ($valueInterval == 3) {
-                            echo '<h1>Due Orders FUTURE:: Sorted by Date</h1>';
+                            echo '<h1>Orders :: Unclaimed Past Month</h1>'; 
+                        } else if ($valueInterval == 4) {
+                            echo '<h1>Orders :: Unclaimed Future</h1>';
                         }
                     } else {
-                        echo '<h1>Due Orders TODAY :: Sorted by Date</h1>';
+                        echo '<h1>Orders :: Unclaimed All Time</h1>';
                     }
 
                 ?>
@@ -120,8 +126,8 @@ $productArray = mysql_query($productquery);
 
             <ul class="actions">
                 <li><a href="view.php" class="button special">Sort by Customer</a></li>
+                <li><a href="viewByDate.php" class="button special">Sort by Date</a></li>
                 <li><a href="viewClaimed.php?interval=1" class="button special">View Claimed</a></li>
-                <li><a href="viewUnclaimed.php?interval=1" class="button special">View Unclaimed</a></li>
 
             </ul>
 
@@ -131,28 +137,47 @@ $productArray = mysql_query($productquery);
                     $valueInterval = $_GET['interval'];
 
                     if ($valueInterval == 1) {
-                        echo '<h4><a href="viewByDate.php">today</a></h4>';
-                        echo '<h4><a href="viewByDate.php?interval=2">this month</a></h4>';
-                        echo '<h4><a href="viewByDate.php?interval=3">future</a></h4>';
-                        
+                        echo '<h4><a href="viewUnclaimed.php?interval=2">past week</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=3">past month</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=4">future</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php">all time</a></h4>';
                     } else if ($valueInterval == 2) {
-                        echo '<h4><a href="viewByDate.php">today</a></h4>';
-                        echo '<h4><a href="viewByDate.php?interval=1">this week</a></h4>';
-                        echo '<h4><a href="viewByDate.php?interval=3">future</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=1">today</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=3">past month</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=4">future</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php">all time</a></h4>';
                     } else if ($valueInterval == 3) {
-                        echo '<h4><a href="viewByDate.php">today</a></h4>';
-                        echo '<h4><a href="viewByDate.php?interval=1">this week</a></h4>';
-                        echo '<h4><a href="viewByDate.php?interval=2">this month</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=1">today</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=2">past week</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=4">future</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php">all time</a></h4>';
+                    } else if ($valueInterval == 4) {
+                        echo '<h4><a href="viewUnclaimed.php?interval=1">today</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=2">past week</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php?interval=3">past month</a></h4>';
+                        echo '<h4><a href="viewUnclaimed.php">all time</a></h4>';
                     }
 
                 } else {
-                    echo '<h4><a href="viewByDate.php?interval=1">this week</a></h4>';
-                    echo '<h4><a href="viewByDate.php?interval=2">this month</a></h4>';
-                    echo '<h4><a href="viewByDate.php?interval=4">future</a></h4>';
-                }
-
+                    echo '<h4><a href="viewUnclaimed.php?interval=1">all time</a></h4>';
+                    echo '<h4><a href="viewUnclaimed.php?interval=2">today</a></h4>';
+                    echo '<h4><a href="viewUnclaimed.php?interval=3">past week</a></h4>';
+                    echo '<h4><a href="viewUnclaimed.php?interval=4">future</a></h4>';
+                }       
             ?>
+            
 
+            <!--
+            <h4><a href="view.php">this day</a></h4>
+            <h4><a href="view.php">this week</a></h4>
+            <h4><a href="view.php">this month</a></h4>
+        -->
+<?php
+        if (mysql_num_rows($productArray) == 0) {
+                echo '<h6 text-align:center> Oops! No orders available </h6>';
+            } else {
+            ?>
+            
             <div class="wrapper">
 
 
@@ -301,6 +326,8 @@ $productArray = mysql_query($productquery);
             
 
             </div> <!-- end div wrapper -->
+
+            <?php }?>
 
             <ul class="actions">
                 <li><a href="customer.php" class="button special">Add</a></li>

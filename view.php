@@ -66,6 +66,7 @@ $custArray2 = mysql_query($custquery);
 	<header>
 		<h1>JNJ Prints</h1>
         <!-- <a href="view.php">View Orders</a> -->
+        <a href="searchcust.php">Search</a>
         <a href="main.php">Home</a>
         
     </header>
@@ -85,13 +86,62 @@ $custArray2 = mysql_query($custquery);
 
 
             <div class="form-title-row">
-                <h1>Orders :: Sorted by Customers</h1>
+                <?php
+
+                    if (isset($_GET['interval'])) {
+                        $valueInterval = $_GET['interval'];
+
+                        if ($valueInterval == 1) {
+                            echo '<h1>Due Orders This Week :: Sorted by Customers</h1>';
+                        } else if ($valueInterval == 2) {
+                            echo '<h1>Due Orders This Month :: Sorted by Customers</h1>';
+                        } else if ($valueInterval == 3) {
+                            echo '<h1>Due Orders FUTURE:: Sorted by Customers</h1>';
+                        }
+                    } else {
+                        echo '<h1>Due Orders TODAY :: Sorted by Customers</h1>';
+                    }
+
+                ?>
             </div>
 
             <ul class="actions">
                 <li><a href="viewByDate.php" class="button special">Sort by Date</a></li>
 
+                <li><a href="viewClaimed.php?interval=1" class="button special">View Claimed</a></li>
+                <li><a href="viewUnclaimed.php?interval=1" class="button special">View Unclaimed</a></li>
+
             </ul>
+
+             <?php
+
+                if (isset($_GET['interval'])) {
+                    $valueInterval = $_GET['interval'];
+
+                    if ($valueInterval == 1) {
+                        echo '<h4><a href="view.php">today</a></h4>';
+                        echo '<h4><a href="view.php?interval=2">this month</a></h4>';
+                        echo '<h4><a href="view.php?interval=3">future</a></h4>';
+                        
+                    } else if ($valueInterval == 2) {
+                        echo '<h4><a href="view.php">today</a></h4>';
+                        echo '<h4><a href="view.php?interval=1">this week</a></h4>';
+                        echo '<h4><a href="view.php?interval=3">future</a></h4>';
+                    } else if ($valueInterval == 3) {
+                        echo '<h4><a href="view.php">today</a></h4>';
+                        echo '<h4><a href="view.php?interval=1">this week</a></h4>';
+                        echo '<h4><a href="view.php?interval=2">this month</a></h4>';
+                    }
+
+                } else {
+                    echo '<h4><a href="view.php?interval=1">this week</a></h4>';
+                    echo '<h4><a href="view.php?interval=2">this month</a></h4>';
+                    echo '<h4><a href="view.php?interval=4">future</a></h4>';
+                }
+
+            ?>
+
+            
             
             <div class="wrapper">
 
@@ -101,11 +151,24 @@ $custArray2 = mysql_query($custquery);
 
                     /*$orderquery = "SELECT * FROM products WHERE products.Cust_ID = '$cRow[0]' AND products.Pickup_Date >= CURDATE() ORDER BY products.Pickup_Date ASC";*/
 
-                    $orderquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date >= CURDATE() AND products.Cust_ID = '$cRow[0]' ORDER BY products.Pickup_Date ASC";
+                    if (isset($_GET['interval'])) {
+                        $valueInterval = $_GET['interval'];
+
+                        if ($valueInterval == 1) {
+                            $orderquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 8 DAY) AND products.Cust_ID = '$cRow[0]' ORDER BY products.Pickup_Date ASC";
+                        } else if ($valueInterval == 2) {
+                            $orderquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 1 MONTH) AND products.Cust_ID = '$cRow[0]' ORDER BY products.Pickup_Date ASC";
+                        } else if ($valueInterval == 3) {
+                            $orderquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date >= CURDATE() AND products.Cust_ID = '$cRow[0]' ORDER BY products.Pickup_Date ASC";
+                        }
+
+                    } else {
+                        $orderquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Pickup_Date = CURDATE() AND products.Cust_ID = '$cRow[0]' ORDER BY products.Pickup_Date ASC";
+                    }
 
                     $orderArray = mysql_query($orderquery)  or trigger_error(mysql_error());;
 
-                    if (mysql_num_rows($orderArray)== 0) {
+                    if (mysql_num_rows($orderArray) == 0) {
 
                     } else {
                         
@@ -165,6 +228,10 @@ $custArray2 = mysql_query($custquery);
                         echo 'Pick Up Date';
                         echo '</div>';
 
+                        echo '<div class="cell">';
+                        echo 'Status';
+                        echo '</div>';
+
 
                         echo '</div>'; // end div row header
 
@@ -188,13 +255,14 @@ $custArray2 = mysql_query($custquery);
                             echo  $oRow[2];
                             echo'</div>';
 
-                            echo'<div class="cell">';
-                            echo  $oRow[3];
-                            echo'</div>';
-
+                            
                             echo '<div class="cell">';
-                            echo $oRow[6];
+                            echo '<a href = "img/'.$oRow[3].'">'.$oRow[3].'</a>';
                             echo '</div>';
+
+                            echo'<div class="cell">';
+                            echo  $oRow[6];
+                            echo'</div>';
 
                             echo '<div class="cell">';
                             echo $oRow[7];
@@ -224,10 +292,19 @@ $custArray2 = mysql_query($custquery);
                             echo '<div class="cell">';
                             echo $oRow[5];
                             echo '</div>';
+
+                            echo '<div class="cell">';
+
+                            if($oRow[14] == 1) {
+                                echo 'Claimed';
+                            } else {
+                                echo 'Unclaimed';
+                            }
+                            echo '</div>';
+
+
                             echo '</div>'; // end div class row
 
-
-                            
                         }
 
                         echo '</div>'; // end div table

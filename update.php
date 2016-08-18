@@ -37,23 +37,28 @@
 
             <div class="form-title-row">
                 <h1>Update Order :: Product Selection</h1>
-                <h2>Please check the Product ID, through the <a href="view.php">Orders Page</a></h2>
+                <h2>Please select which you would like to update.</h2>
+               <!--  <h2>To check the Product ID, please the <a href="view.php">Orders Page</a></h2> -->
             </div>
 
-            <div class="form-row">
-                <label>
-                    <span>Products: </span>
-                    <select name="dropdown" onchange = "redirect(this.value)">
+            <!-- <div class="form-row"> -->
 
-                        <option value = "">Products</option>
-                        <option value = "update_bagtag.php">Bag Tag</option>
-                        <option value = "update_bagtag.php">Key Chain</option>
-                        <option value = "">Tarpaulin</option>
-                        <option value = "">Shirts</option>
-                        <option value = "">Tumbler</option>
-                    </select>
-                </label>
-            </div>
+                <h5><a href="searchcust.php">Customer Info</a></h5>
+
+            <!-- </div> -->
+
+            <!-- <div class="form-row"> -->
+                <h5><a href="update_order.php">Order Info</a></h5>
+
+
+            <!-- </div> -->
+
+            <!-- <div class="form-row"> -->
+                <h5><a href="update_status.php">Order Status</a></h5>
+
+
+            <!-- </div> -->
+
 
 
 

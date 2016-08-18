@@ -20,12 +20,29 @@
 					<li><a href="update.php" class="button special">Update</a></li>
 					<li><a href="delete.php" class="button special">Delete</a></li>
 					<li><a href="view.php" class="button special">View</a></li>
+					<li><a href="sales.php" class="button special">Sales</a></li>
 				</ul>
 			</section>
 
 		<!-- One -->
 			<section id="one" class="wrapper special">
 				<div class="inner">
+					<header class="majortwo">
+						<h6>
+							<form method="get" action="searchcust.php">
+								<div class="row uniform">
+									<div class="9u 12u$(small)">
+										<input type="text" name="search" id="query" value="" placeholder="Search database" />
+									</div>
+									<div class="3u$ 12u$(small)">
+										<input type="submit" value="Go"/>
+									</div>
+								</div>
+							</form>
+						</h6>
+
+					</header>
+
 					<header class="major">
 						<h2>Services Offered</h2>
 					</header>

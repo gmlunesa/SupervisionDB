@@ -28,14 +28,14 @@ $valuePID = $_POST['PID'];
 
 // If the type area is not empty, then update the tables.
     // Meaning naa siyay ganahan ichange sa type
-if (!empty($_POST['Type'])) {
+if (!empty($_POST['Size'])) {
 
     // retrieve the product type and store it in a variable
-    $valueType = $_POST['Type'];
+    $valueSize = $_POST['Size'];
     
     // make a query. specify the $variables that we just made above.
     // please just change the SET statement
-    if (!mysql_query("UPDATE products SET Type = '$valueType' WHERE Prod_ID = '$valuePID' ")) {
+    if (!mysql_query("UPDATE products SET Size = '$valueSize' WHERE Prod_ID = '$valuePID' ")) {
         die('Error: ' . mysql_error());
     }
 }
@@ -97,7 +97,8 @@ if (!empty($_POST['Prod_Design'])) {
         }
     }
 
-    $valueDes = $_POST['Prod_Design'].".".$ext;
+
+    $valueDes = $_POST['Prod_Design'] .".".$ext;
     
     if (!mysql_query("UPDATE products SET Prod_Design = '$valueDes' WHERE Prod_ID = '$valuePID' ")) {
         die('Error: ' . mysql_error());

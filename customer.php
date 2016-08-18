@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Basic Form</title>
+	<title>Add Customer</title>
 
 	<link rel="stylesheet" href="assets/demo.css">
 	<link rel="stylesheet" href="assets/form-basic.css">
@@ -17,6 +17,7 @@
  
 	<header>
 		<h1>JNJ Prints | Order Form</h1>
+        <a href="searchcust.php">Search</a>
         <a href="view.php">View Orders</a>
         <a href="main.php">Home</a>
     </header>

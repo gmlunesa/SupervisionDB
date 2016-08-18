@@ -37,7 +37,7 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
         <!-- the 'action' word in the form tag indicates where it will redirect, when the 'Continue button is pressed' -->
             <!-- TO BE CHANGED -->
             <!-- CHANGE THE DESTINATION INDICATED BY ACTION -->
-        <form class="form-basic" method="post" action="bagtag_php.php"  enctype="multipart/form-data">
+        <form class="form-basic" method="post" action="keychain_php.php" enctype="multipart/form-data">
 
             <div class="form-title-row">
                 <h1>Add Order :: Product Information</h1>
@@ -57,27 +57,29 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
                         <option value = "Clear Plastic">Clear Plastic</option>
                         <option value = "Glass">Glass</option>
                     </select>
-
-                    <!--If it's not a dropdown choice, you can replace <select> </select> with
-                        <input type="text" name="Type"> IF IT IS A TEXT/WORD
-                        <input type="number" name="Type"> IF IT IS A NUMBER
-                    -->
-
-
+                    
                 </label>
             </div>
             <!-- END TO BE CHANGED -->
 
+            <!-- added a unique property which is shape. didn't make it into a drop down option because I think too many for options :) -->
+
+            <div class="form-row">
+                <label>
+                    <span>Shape</span>
+                    <input type="text" name="Shape">
+                </label>
+            </div>
+
             <div class="form-row">
 
                 <label>
-                    <!-- Please take note of the <input name = "Something">, it represents the NAME of the variable of the database table. -->
+                    <!-- Please take note of the input name, it represents the NAME of the variable of the database table. -->
                     <!-- The input name will be passed to the next page, so don't worry -->
                     <span>Description</span>
                     <input type="text-area" name="Prod_Desc">
                 </label>
             </div>
-
 
             <div class="form-row">
                 <label>
@@ -92,7 +94,6 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
                     <input type="text" name="Prod_Design">
                 </label>
             </div>
-
 
             <div class="form-row">
                 <label>

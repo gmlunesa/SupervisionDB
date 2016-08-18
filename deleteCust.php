@@ -18,15 +18,20 @@ if (!$db_selected) {
     die('Can\'t use ' . DB_NAME . ': ' . mysql_error());
 }
 
+if (isset($_GET['CID'])) {
+    $valueCID = $_GET['CID'];
+} else {
+    //retrieve the product ID, store it in the variable
+    $valueCID = $_POST['CID'];
+}
 
-//retrieve the product ID, store it in the variable
-$valuePID = $_POST['PID'];
+$_SESSION['deleteID'] = $valueCID;
 
-$_SESSION['deleteID'] = $valuePID;
-
-$productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Prod_ID = $valuePID";
+$productquery = "SELECT products.*, customer.Cust_FName, customer.Cust_LName FROM products INNER JOIN customer ON products.Cust_ID = customer.Cust_ID WHERE products.Cust_ID = $valueCID";
+$custquery = "SELECT customer.* FROM customer WHERE Cust_ID = $valueCID";
 
 $productArray = mysql_query($productquery);
+$custArray = mysql_query($custquery);
 
 
 ?>
@@ -51,9 +56,10 @@ $productArray = mysql_query($productquery);
 
     <header>
         <h1>JNJ Prints</h1>
-        <a href="searchcust.php">Search</a>
-        <a href="view.php">View Order</a>
+        <a href="view.php">Delete Order</a>
         <a href="main.php">Home</a>
+        <a href="view.php">View Orders</a>
+        <a href="searchcust.php">Search</a>
         
     </header>
 
@@ -81,6 +87,11 @@ $productArray = mysql_query($productquery);
 
 
             <?php 
+
+                while ($cRow =  mysql_fetch_array($custArray)) {
+                    echo '<h3>'.$cRow[1].' '. $cRow[2].' | '.$cRow[3].' | '.$cRow[4].' | <a href="receipt.php?link='.  $cRow[0] .  '">Receipt</a> </h3>';
+
+                }
                 echo '<div class="table">';
 
                     echo'<div class="row header">'; 
@@ -207,7 +218,7 @@ $productArray = mysql_query($productquery);
             </div> <!-- end div wrapper -->
 
             <ul class="actions">
-                <li><a href="confirmdelete.php" class="button special">Confirm</a></li>
+                <li><a href="exp1.php" class="button special">Confirm</a></li>
                 <li><a href="delete.php" class="button special">Cancel</a></li>
             </ul>
 

@@ -205,7 +205,7 @@ while($row = mysql_fetch_array($prices)) {
 	<h1> This is an official receipt. No refunds are allowed.</h1>
 	<br>
 	<a href="main.php"> HOME </a>
-    <a href="view.php"> Orders </a>
+    <a href="view.php"> ORDERS </a>
 	</footer>
 </div>
 

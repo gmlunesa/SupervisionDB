@@ -31,7 +31,9 @@ session_start();
 
     <div class="main-content">
 
-        <form class="form-basic" method="post" action="uBagtag_php.php">
+        <!-- to be changed, please change the action url, to uTumbler.php for example, thanks so much -->
+        <form class="form-basic" method="post" action="uBagtag_php.php" enctype="multipart/form-data">
+        <!-- end to be changed -->
 
             <div class="form-title-row">
                 <h1>Update Order :: Product Information</h1>
@@ -45,6 +47,7 @@ session_start();
                 </label>
             </div>
 
+            <!-- To be changed, please change this to the unique types per product -->
             <div class="form-row">
                 <label>
                     <span>Type</span>
@@ -60,6 +63,8 @@ session_start();
                 </label>
             </div>
 
+            <!-- end to be changed -->
+
             <div class="form-row">
                 <label>
                     <span>Description</span>
@@ -69,7 +74,14 @@ session_start();
 
             <div class="form-row">
                 <label>
-                    <span>Design</span>
+                    <span>Design File</span>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Design File Name</span>
                     <input type="text" name="Prod_Design">
                 </label>
             </div>

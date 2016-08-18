@@ -39,6 +39,17 @@ if (!empty($_POST['Type'])) {
         die('Error: ' . mysql_error());
     }
 }
+if (!empty($_POST['Shape'])) {
+
+    // retrieve the product type and store it in a variable
+    $valueShape = $_POST['Shape'];
+    
+    // make a query. specify the $variables that we just made above.
+    // please just change the SET statement
+    if (!mysql_query("UPDATE products SET Shape = '$valueShape' WHERE Prod_ID = '$valuePID' ")) {
+        die('Error: ' . mysql_error());
+    }
+}
 
 // END TO BE CHANGED
 
@@ -96,7 +107,7 @@ if (!empty($_POST['Prod_Design'])) {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-
+    
     $valueDes = $_POST['Prod_Design'].".".$ext;
     
     if (!mysql_query("UPDATE products SET Prod_Design = '$valueDes' WHERE Prod_ID = '$valuePID' ")) {

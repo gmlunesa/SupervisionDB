@@ -47,11 +47,7 @@ if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
 }
-// Check file size
-/*if ($_FILES["fileToUpload"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}*/
+
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
@@ -70,11 +66,12 @@ if ($uploadOk == 0) {
     }
 }
 
+
 // We retrieve the input values from the previous page, and store it to temporary variables.
 // What you put inside $_POST[''] is the variable name corresponding with the <input name = ""> in the previous page.
     //TO BE CHANGED
         // Please change this accordingly, for the following represents the unique variables for each product.
-$valueType = $_POST['Type'];
+$valueColor = $_POST['Color'];
 
 // Default properties for each product
 $valueDesc = $_POST['Prod_Desc'];
@@ -85,12 +82,12 @@ $valueQuantity = $_POST['Quantity'];
 
 // Specify the name of the product
     // TO BE CHANGED
-$valueName = "Bag Tag";
+$valueName = "Shirt";
 
 // Make a query. Specify the table column firsts, and then the php $variables that we just made, above
     // TO BE CHANGED
         // Please update the unique variables.
-$sql = "INSERT INTO products (Prod_Name, Type, Prod_Desc, Prod_Design, Design_Price, Pickup_Date, Quantity, Cust_ID) VALUES ('$valueName','$valueType', '$valueDesc', '$valueDesign', '$valuePrice', '$valueDate', '$valueQuantity', '$custID')";
+$sql = "INSERT INTO products (Prod_Name, Prod_Desc, Prod_Design, Design_Price, Pickup_Date, Quantity, Cust_ID, Color) VALUES ('$valueName','$valueDesc', '$valueDesign', '$valuePrice', '$valueDate', '$valueQuantity', '$custID', '$valueColor')";
 
 
 // Execute the query. This if statement is not necessary, but it acts like a try/catch function.

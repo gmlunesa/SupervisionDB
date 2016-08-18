@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-// Determine the current Customer ID
-$lastCustIDpassed = $_SESSION['lastCustID'];
-
 /*echo "I'd like {$lastCustIDpassed} waffles";*/
 
 ?>
@@ -17,7 +14,7 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Basic Form</title>
+	<title>Update</title>
 
 	<link rel="stylesheet" href="assets/demo.css">
 	<link rel="stylesheet" href="assets/form-basic.css">
@@ -26,7 +23,7 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
 
  
 	<header>
-		<h1>JNJ Prints | Order Form</h1>
+		<h1>JNJ Prints | Update Order</h1>
         <a href="view.php">View Orders</a>
         <a href="main.php">Home</a>
     </header>
@@ -34,13 +31,20 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
 
     <div class="main-content">
 
-        <!-- the 'action' word in the form tag indicates where it will redirect, when the 'Continue button is pressed' -->
-            <!-- TO BE CHANGED -->
-            <!-- CHANGE THE DESTINATION INDICATED BY ACTION -->
-        <form class="form-basic" method="post" action="bagtag_php.php"  enctype="multipart/form-data">
+        <!-- to be changed, please change the action url, to uTumbler.php for example, thanks so much -->
+        <form class="form-basic" method="post" action="uTumbler_php.php" enctype="multipart/form-data">
+        <!-- end to be changed -->
 
             <div class="form-title-row">
-                <h1>Add Order :: Product Information</h1>
+                <h1>Update Order :: Product Information</h1>
+                <h2>Please check the Product ID, through the <a href="view.php">Orders Page</a></h2>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Product ID</span>
+                    <input required type="number" name="PID">
+                </label>
             </div>
 
             <!-- TO BE CHANGED -->
@@ -51,33 +55,24 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
 
                     <!-- select tag is used for drop down choices. -->
                     <!-- Take note of the select name. It represents the NAME of the variable of the database table.-->
-                    <select name="Type">
+                    <select name="Size">
                         <!-- The option value represents the value that will be stored in the variable, specified in select name-->
-                        <option value = "Rubber">Rubber</option>
-                        <option value = "Clear Plastic">Clear Plastic</option>
-                        <option value = "Glass">Glass</option>
+                        <option value ="">Size</option>
+                        <option value = "Small">Small</option>
+                        <option value = "Medium">Medium</option>
+                        <option value = "Large">Large</option>
                     </select>
-
-                    <!--If it's not a dropdown choice, you can replace <select> </select> with
-                        <input type="text" name="Type"> IF IT IS A TEXT/WORD
-                        <input type="number" name="Type"> IF IT IS A NUMBER
-                    -->
-
-
+                    
                 </label>
             </div>
             <!-- END TO BE CHANGED -->
 
             <div class="form-row">
-
                 <label>
-                    <!-- Please take note of the <input name = "Something">, it represents the NAME of the variable of the database table. -->
-                    <!-- The input name will be passed to the next page, so don't worry -->
                     <span>Description</span>
                     <input type="text-area" name="Prod_Desc">
                 </label>
             </div>
-
 
             <div class="form-row">
                 <label>
@@ -92,7 +87,6 @@ $lastCustIDpassed = $_SESSION['lastCustID'];
                     <input type="text" name="Prod_Design">
                 </label>
             </div>
-
 
             <div class="form-row">
                 <label>

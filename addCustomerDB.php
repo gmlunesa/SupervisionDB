@@ -85,10 +85,10 @@ mysql_close();
 
                         <option value = "">Products</option>
                         <option value = "order_bagtag.php">Bag Tag</option>
-                        <option value = "order_bagtag.php">Key Chain</option>
-                        <option value = "">Tarpaulin</option>
-                        <option value = "">Shirts</option>
-                        <option value = "">Tumbler</option>
+                        <option value = "order_keychain.php">Key Chain</option>
+                        <option value = "order_tarpaulin.php">Tarpaulin</option>
+                        <option value = "order_shirt.php">Shirts</option>
+                        <option value = "order_tumbler.php">Tumbler</option>
                     </select>
                 </label>
             </div>
