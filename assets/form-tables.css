@@ -3,7 +3,7 @@ html{
 }
 
 .form-basic{
-    max-width: 1260px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 55px;
     box-sizing: border-box;
@@ -170,9 +170,9 @@ html{
     
     font-weight: bold;
     /*box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);*/
-    padding: 14px 20px;
+    /*padding: 14px 20px;*/
     border: 0;
-    margin: 40px 220px 0;
+    /*margin: 40px 220px 0;*/
     /*float: center;*/
     /*text-align: center;*/
 
@@ -236,7 +236,7 @@ ul.actions {
             /* ADDED CODE */
             padding-top: 0;
             padding-bottom: 0;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             margin-top: 10px;
 
         }
@@ -255,14 +255,58 @@ ul.actions {
                     padding-right: 0;
                 }
 
-.button.special {
+
+.form-basic h4 {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+
+
+    display: inline-block;
+    /*padding: 10px 10px 10px 10px;*/
+    padding: 0 0 0 0;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.form-basic h4 a {
+    border-radius: 3px;
+    padding: 3px 3px 3px 3px;
+    text-decoration: none;
+    background-color: #ccc;
+    color: #fff !important;
+
+}
+
+.form-basic h4 a:hover {
+    
+    padding: 3px 3px 3px 3px;
+    text-decoration: none;
+    background-color: #ddd;
+    color: #fff !important;
+
+}
+
+.form-basic h6 {
+    text-align: center;
+    color:  #5F5F5F;
+    font-size: 20px;
+    /*padding: 0 10px 15px;*/
+    font-weight: normal;
+    /*margin-bottom: 5px;*/
+    padding-bottom: 20px;
+
+}
+
+.button.special {padding: 8px 8px 8px 8px;
                 background-color: #0FDDAF;
                 color: #fff !important;
-            }
+}
 
 .button.special:hover {
-                    background-color: #49E9BD;
-                }
+    background-color: #49E9BD;
+}
 
 .button.special:active {
                     background-color: #008183;

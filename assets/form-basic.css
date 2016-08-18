@@ -69,6 +69,16 @@ html{
 
 }
 
+.form-basic h6 {
+    text-align: left;
+    color:  #5F5F5F;
+    font-size: 20px;
+    /*padding: 0 10px 15px;*/
+    font-weight: normal;
+    margin-bottom: 1px;
+
+}
+
 .form-basic .success {
    /* display: inline-block;
     box-sizing: border-box;
@@ -252,3 +262,67 @@ ul.actions {
 .button.special:active {
                     background-color: #008183;
                 }
+
+.form-basic h4 {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+
+
+    display: inline-block;
+    /*padding: 10px 10px 10px 10px;*/
+    padding: 0 0 0 0;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.form-basic h4 a {
+    border-radius: 3px;
+    padding: 3px 3px 3px 3px;
+    text-decoration: none;
+    background-color: #ccc;
+    color: #fff !important;
+
+}
+
+.form-basic h4 a:hover {
+    
+    padding: 3px 3px 3px 3px;
+    text-decoration: none;
+    background-color: #ddd;
+    color: #fff !important;
+
+}
+.form-basic h5 {
+    cursor: default;
+    list-style: none;
+    padding-left: 0;
+    font-size: 13px;
+
+    display: inline-block;
+    /*padding: 10px 10px 10px 10px;*/
+    padding: 0 0 0 0;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.form-basic h5 a {
+    border-radius: 3px;
+    padding: 10px 10px 10px 10px;
+    width: 200px;
+    text-decoration: none;
+    background-color: #0FDDAF;
+    color: #fff !important;
+    font-weight: normal;
+}
+
+.form-basic h5 a:hover {
+    font-weight: bold;
+    /*padding: 3px 3px 3px 3px;*/
+    text-decoration: none;
+    background-color: #49E9BD;
+    color: #fff !important;
+
+}

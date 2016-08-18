@@ -13,7 +13,7 @@
   margin: 0 auto;
   /*padding: 40px;*/
   padding: 0;
-  max-width: 1250px;
+  max-width: 1300px;
 }
 
 .table {
@@ -63,7 +63,7 @@
   display: table-cell;
   padding-top: 6px;
   padding-bottom: 6px;
-  width: 208px;
+  width: 225px;
   overflow: hidden;
 
 
